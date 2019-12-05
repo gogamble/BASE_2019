@@ -1,0 +1,28 @@
+<tool id="check_samcomp_for_lost_reads" name="Check Sam Compare" version="0.1.0">
+    <description>Checks Sam Compare output for lost reads</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements" />
+    <command detect_errors="exit_code" interpreter="python">check_samcomp_for_lost_reads.py
+--bwa1=$bwa1
+--G1=$G1
+--bwa2=$bwa2
+--G2=$G2
+--sam=$sam
+--out=$out
+    </command>
+    <inputs>
+        <param name="bwa1" type="data" format="tabular" label="The bwa split sam summary file containing uniq read counts sam1" help=""/>
+        <param name="G1" type="text" label="The genotype all others are compared to" help=""/>
+        <param name="bwa2" type="data" format="tabular" label="The bwa split sam summary file containing uniq read counts sam2"/>
+        <param name="G2" type="text" label="Comparing genotype" help=""/>
+        <param name="sam" type="data" format="tabular" label="The ase totals file containing read counts used in sam compare [Required]" help=""/>
+    </inputs>
+    <outputs>
+        <data name="out" format="tabular" label="${tool.name} on ${on_string}: Lost reads"/>
+    </outputs>
+    <help><![CDATA[
+        TODO: Fill in help.
+    ]]></help>
+</tool>

@@ -1,0 +1,27 @@
+<tool id="BWASplitSAM" name="BWA Split SAM" version="0.1.0">
+    <description>BWASplitSAM</description>
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code" intepreter="python">BWASplitSAM.py
+
+--sam $sam
+--fq1 $fq1
+--fq2 $fq2
+--summname $summname
+--odir $odir
+--log $log
+
+    </command>
+    <inputs>
+        <param name="sam" type="data" format="tabular" label="SAM file" help=""/>
+        <param name="fq1" type="data" format="tabular" label="FastQ1 file" help=""/>
+        <param name="fq2" type="data" format="tabular" label="FastQ2 file" help=""/>
+        <param name="summname" type="text" label="Name in summary file" help=""/>
+    </inputs>
+    <outputs>
+        <data format="tabular" name="odir" label="${tool.name} on ${on_string}: Split SAM"/>
+    </outputs>
+    <help><![CDATA[
+        TODO: Fill in help.
+    ]]></help>
+</tool>

@@ -1,0 +1,33 @@
+<tool id="check_pre_aln_design" name="Check Pre Alignment Design File" version="0.1.0">
+    <description>check_pre_aln_design</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code" interpreter="python">check_pre_aln_design_08brm.py
+--design=$design
+--id=$id
+--fnames=$fnames
+--g1=$g1
+--g2=$g2
+--rep=$rep
+--ex=$ex
+--readlen=$readlen
+    </command>
+    <inputs>
+        <param name="design" type="data" format="tabular" label="Design file containing fq file names and sample ids" help=""/>
+        <param name="id" type="text" label="Name of the column containing sampleIDs" help=""/>
+        <param name="fnames" type="text" label="Name of the column containing fastq file names" help=""/>
+        <param name="g1" type="text" label="Name of the column containing G1 names" help=""/>
+        <param name="g2" type="text" label="Name of the column containing G2 names" help=""/>
+        <param name="rep" type="text" label="fastq extension type" help=""/>
+        <param name="ex" type="text" label="Name of the column containing rep values" help=""/>
+        <param name="readlen" type="text" label="Name of column containing readLength values" help=""/>
+    </inputs>
+    <outputs>
+    </outputs>
+    <help><![CDATA[
+        TODO: Fill in help.
+    ]]></help>
+</tool>

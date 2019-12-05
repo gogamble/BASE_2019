@@ -1,0 +1,19 @@
+<tool id="check_for_lost_reads" name="Check for lost reads" version="0.1.0">
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code" interpreter="python">check_for_lost_reads.py
+--alnSum1=$alnSum1
+--alnSum2=$alnSum2
+--out=$out
+    </command>
+    <inputs>
+        <param name="alnSum1" type="data" format="tabular" label="The G1 alignment summary file containing all read types [Required]" help="brecca TD"/>
+        <param name="alnSum2" type="data" format="tabular" label="The G2 alignment summary file containing all read types [Required]" help="brecca TD"/>
+    </inputs>
+    <outputs>
+       <data format="tabular" name="out" label="${tool.name} on ${on_string}: Lost Reads"/>
+    </outputs>
+    <help><![CDATA[
+        TODO: Fill in help.
+    ]]></help>
+</tool>

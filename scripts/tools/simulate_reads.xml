@@ -1,0 +1,26 @@
+<tool id="simulate_reads" name="Simulate reads for Bayesian" version="0.1.0">
+    <description> </description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code" interpreter="python">simulate_reads.py
+--input=$input
+--num=$num
+--prefix=$prefix
+--out=$out
+    </command>
+    <inputs>
+        <param name="input" type="data" format="tabular" label="FASTA file" help=""/>
+        <param name="num" type="text" label="Read length for simulation" help=""/>
+        <param name="prefix" type="text" label="A prefix to add to the read id for distinguishing where reads came from" help=""/>
+    </inputs>
+    <outputs>
+        <data format="tabular" name="out" label="simulate reads output"/>
+   </outputs>
+    <help><![CDATA[
+        TODO: Fill in help.
+    ]]></help>
+</tool>
+

@@ -1,0 +1,39 @@
+<tool id="compare 2 sam files" name="Tool Name" version="0.1.0">
+    <description>Tool description</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements" />
+    <command detect_errors="exit_code"interpreter="python">sam_compare_w_feature.py
+
+--length=$length
+--fastq=$fastq
+--sama=$sama
+--samb=$samb
+--feature=$feature
+--counts=$counts
+--totals=$totals
+--nofqids=$nofqids
+--log=$log
+--debug=$debug
+
+    </command>
+    <inputs>
+        <param name="Fastq file" type="data" format="tabular" label="Name of the Fastq file used to generate the sam files" help=""/>
+        <param name="Read Length" type="text" label="Read length" help=""/>
+        <param name="samA" type="data" format="tabular" label="Name of the first SAM file (A)" help=""/>
+        <param name="samB" type="data" format="tabular" label="Name of the second SAM file (B)" help=""/>
+        <param name="Bed file" type="data" format="tabular" label="Bed file of regions to Fusion file name, TSV or BED" help=""/>
+        <param name="nofqids" type="select" size="30" format="tabular" label="Select yes if SAM reads QNAME does not need to be checked against Sequence IDs" help="">
+            <option value="-n" selected="true">Yes</option>
+            <option value=" " selected="true">No</option>
+        </param>
+    </inputs>
+    <outputs>
+        <param name="counts" format="tabular" label="${tool.name} on ${on_string}: Counts Table"/>
+        <param name="totals" format="tabular" label="${tool.name} on ${on_string}: Totals Table"/>
+    </outputs>
+    <help><![CDATA[
+        TODO: Fill in help.
+    ]]></help>
+</tool>

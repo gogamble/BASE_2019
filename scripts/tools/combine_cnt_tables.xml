@@ -1,0 +1,36 @@
+<tool id="combine_cnt_tables" name="Combine Count Tables" version="0.1.0">
+    <description> </description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code" interpreter="python">combine_cnt_tables_13brm.py
+--design=$design
+--simdesign=$simdesign
+--sim=$sim
+--bed=$bed
+--begin=$begin
+--end=$end
+--out=$out
+--simout=$simout
+    </command>
+    <inputs>
+        <param name="design" type="data" format="tabular" label="Design file containing fastq fqNames and sampleIDs" help=""/>
+        <param name="simdesign" type="data" format="tabular" label="Design file containing split simulated fastq fqNames and genotype information" help=""/>
+        <param name="bed" type="data" format="tabular" label="Bed File" help=""/>
+        <param name="begin" type="text" label="Start point in design file" help=""/>
+        <param name="end" type="text" label="End point in design file" help=""/>
+        <param name="sim" size="30" type="select" value="" display="radio" label="Specify if this is a simulation dataset or other" help="Select whether a simulation or real data is being run">
+            <option value="True" selected="true">Simulation dataset</option>
+            <option value="False" selected="false">Other</option>
+        </param>
+    </inputs>
+    <outputs>
+        <data format="tabular" name="out" label="Combine Count tables summed count table"/>
+        <data format="tabular" name="simout" label="combine count tables simulated summed count table"/>
+   </outputs>
+    <help><![CDATA[
+        TODO: Fill in help.
+    ]]></help>
+</tool>
