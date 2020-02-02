@@ -1,0 +1,27 @@
+<tool id="merge_comparates_for_bayesian" name="Merge comparates for bayesian" version="0.1.0">
+    <description>merge_comparates_for_bayesian</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code" interpreter="python">merge_comparates_for_bayesian_03amm.py
+--output=$output
+--comp=$comp
+--design=$design
+--begin=$begin
+--end=$end
+    </command>
+    <inputs>
+        <param name="comp" type="data" format="tabular" label="Input filtered/summarized count tables per one comparate" help=""/>
+        <param name="design" type="data" format="tabular" label="Design file" help=""/>
+        <param name="begin" type="integer" label="Design file subset beginning(row number)" help=""/>
+        <param name="end" type="integer" label="Design file subset end (row number)" help=""/>
+    </inputs>
+    <outputs>
+        <data format="tabular" name="output" label="${tool.name} on ${on_string}:Check info"/>
+    </outputs>
+    <help><![CDATA[
+        TODO: Fill in help.
+    ]]></help>
+</tool>

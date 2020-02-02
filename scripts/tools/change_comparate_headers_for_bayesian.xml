@@ -1,0 +1,30 @@
+<tool id="change_comparate_headers_for_bayesian" name="Change comparate headers for Bayesian" version="0.1.0">
+    <description>change_comparate_headers_for_bayesian</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code" interpreter="python">change_comparate_headers_for_bayesian_02brm.py
+--design=$design
+--datafile=$array
+--array=$array
+--cond=$cond
+--output=$output
+    </command>
+    <inputs>
+        <param name="design" type="data" format="tabular" label="Design File" help="Contains G1, G2, comparate names, and compIDs for files to analyze[CSV]"/>
+        <param name="datafile" type="data" format="tabular" label="Input datafile" help=""/>
+        <param name="array" type="integer" label="Numerical value representing row of design file to be analyzed" help=""/>
+        <param name="cond" type="integer" label="Numerical value representing number of comparates to be analyzed" help=""/>
+    </inputs>
+    <outputs>
+        <data format="tabular" name="output" label="${tool.name} on ${on_string}:Check info"/>
+    </outputs>
+    <help><![CDATA[
+        TODO: Fill in help.
+    ]]></help>
+</tool>
+
+
+

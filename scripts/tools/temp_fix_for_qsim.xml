@@ -1,0 +1,25 @@
+<tool id="temp_fix_for_qsim" name="temp fix for qsim" version="0.1.0">
+    <description>temp_fix_for_qsim</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code" interpreter="python">temp_fix_for_qsim_02brm.py
+--datafile=$datafile
+--output=$output
+    </command>
+    <inputs>
+        <param name="datafile" type="data" format="tabular" label="Bayesian Input File" help=""/>
+    </inputs>
+    <outputs>
+        <data format="tabular" name="output" label="${tool.name} on ${on_string}:Check info"/>
+    </outputs>
+    <help><![CDATA[
+        TODO: Fill in help.
+    ]]></help>
+</tool>
+
+
+
+
