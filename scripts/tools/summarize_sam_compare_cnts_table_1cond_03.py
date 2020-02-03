@@ -39,17 +39,14 @@ def getOptions():
     parser.add_argument("-d", "--design", dest="design", action='store', required=True, help="Design file")
     parser.add_argument("-c", "--compCol", dest="compCol", action='store', required=True, help="Name of the comparison column in your design file")
     parser.add_argument("-l", "--lineCol", dest="lineCol", action='store', required=True, help="Name of the column in your design file containing lines")
-    parser.add_argument("-s", "--sam-compare-dir", dest="samCompDir", action='store', required=True, help="Path to directory containing summed ase count tables")
+    parser.add_argument("-s", "--samCompdir", dest="samCompDir", action='store', required=True, help="Path to directory containing summed ase count tables")
     parser.add_argument("-a", "--apn", dest="apn", action='store', required=True, type=int, help="APN (average per nucleotide) value for flagging a feature as found and analyzable")
-    parser.add_argument("--debug", action='store_true', default=False, help="Print debugging output")
     args=parser.parse_args()
     return(args)
 
 def main():
     """Main Function"""
     args = getOptions()
-    global DEBUG
-    if args.debug: DEBUG = True
 
     ## Read in design file as dataframe
     df_design = pd.read_csv(args.design, sep=',', header=0)

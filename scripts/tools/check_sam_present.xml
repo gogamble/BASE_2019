@@ -1,8 +1,5 @@
 <tool id="check_sam_present" name="Check the present sam" version="0.1.0">
     <description>check_sam_present</description>
-    <macros>
-        <import>macros.xml</import>
-    </macros>
     <requirements>
     </requirements>
     <command detect_errors="exit_code" interpreter="python">check_sam_present.py

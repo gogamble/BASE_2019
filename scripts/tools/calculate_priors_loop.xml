@@ -1,8 +1,5 @@
 <tool id="calculate_priors_loop" name="Calculate priors loop" version="0.1.0">
     <description>calculate_priors_loop</description>
-    <macros>
-        <import>macros.xml</import>
-    </macros>
     <requirements>
     </requirements>
     <command detect_errors="exit_code" interpreter="python">calculate_priors_loop.py

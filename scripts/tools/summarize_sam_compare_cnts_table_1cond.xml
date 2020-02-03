@@ -1,8 +1,5 @@
-<tool id="summarize_sam_compare_cnts_table_1cond" name="summarize_sam_compare_cnts_table_1cond.xml" version="0.1.0">
+<tool id="summarize_sam_compare_cnts_table_1cond" name="summarize_sam_compare_cnts_table_1cond" version="0.1.0">
     <description></description>
-    <macros>
-        <import>macros.xml</import>
-    </macros>
     <requirements>
     </requirements>
     <command detect_errors="exit_code" interpreter="python">summarize_sam_compare_cnts_table_1cond_03.py
@@ -10,15 +7,15 @@
 --design=$design
 --compCol=$compCol
 --lineCol=$lineCol
---sam-compare-dir=$sam-compare-dir
---apm=$apn
+--samCompdir=$samCompdir
+--apn=$apn
     </command>
     <inputs>
         <param name="design" type="data" format="tabular" label="Design file" help=""/>
-        <param name="compCol" type="text" label="Name of the comparison column in your design file" help""/>
-        <param name="lineCol" type="text" label="Name of the column in your design file containing lines" help""/>
-        <param name="sam-compare-dir" type="data" format="tabular" label="Summed ase count tables" help=""/>
-        <param name="apn" type="text" label="APN (average per nucleotide) value for flagging a feature as found and analyzable" help""/>
+        <param name="compCol" type="text" label="Name of the comparison column in your design file" help=""/>
+        <param name="lineCol" type="text" label="Name of the column in your design file containing lines" help=""/>
+        <param name="samCompdir" type="data" format="tabular" label="Summed ase count tables" help=""/>
+        <param name="apn" type="text" label="APN (average per nucleotide) value for flagging a feature as found and analyzable" help=""/>
     </inputs>
     <outputs>
         <data format="tabular" name="output" label="${tool.name} on ${on_string}:Check info"/>

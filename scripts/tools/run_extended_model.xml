@@ -1,8 +1,5 @@
 <tool id="run_extended_model" name="Run extended bayesian model" version="0.1.0">
     <description>run_extended_model</description>
-    <macros>
-        <import>macros.xml</import>
-    </macros>
     <requirements>
     </requirements>
     <command detect_errors="exit_code" interpreter="python">run_extended_model.py

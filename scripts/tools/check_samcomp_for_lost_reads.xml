@@ -1,9 +1,5 @@
 <tool id="check_samcomp_for_lost_reads" name="Check Sam Compare" version="0.1.0">
     <description>Checks Sam Compare output for lost reads</description>
-    <macros>
-        <import>macros.xml</import>
-    </macros>
-    <expand macro="requirements" />
     <command detect_errors="exit_code" interpreter="python">check_samcomp_for_lost_reads.py
 --bwa1=$bwa1
 --G1=$G1

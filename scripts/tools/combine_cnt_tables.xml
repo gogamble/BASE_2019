@@ -1,8 +1,5 @@
 <tool id="combine_cnt_tables" name="Combine Count Tables" version="0.1.0">
     <description> </description>
-    <macros>
-        <import>macros.xml</import>
-    </macros>
     <requirements>
     </requirements>
     <command detect_errors="exit_code" interpreter="python">combine_cnt_tables_13brm.py

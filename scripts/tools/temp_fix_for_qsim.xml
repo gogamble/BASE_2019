@@ -1,8 +1,5 @@
 <tool id="temp_fix_for_qsim" name="temp fix for qsim" version="0.1.0">
     <description>temp_fix_for_qsim</description>
-    <macros>
-        <import>macros.xml</import>
-    </macros>
     <requirements>
     </requirements>
     <command detect_errors="exit_code" interpreter="python">temp_fix_for_qsim_02brm.py

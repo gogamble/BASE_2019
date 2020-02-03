@@ -1,8 +1,5 @@
 <tool id="change_comparate_headers_for_bayesian" name="Change comparate headers for Bayesian" version="0.1.0">
     <description>change_comparate_headers_for_bayesian</description>
-    <macros>
-        <import>macros.xml</import>
-    </macros>
     <requirements>
     </requirements>
     <command detect_errors="exit_code" interpreter="python">change_comparate_headers_for_bayesian_02brm.py

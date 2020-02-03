@@ -1,8 +1,5 @@
 <tool id="check_pre_aln_design" name="Check Pre Alignment Design File" version="0.1.0">
     <description>check_pre_aln_design</description>
-    <macros>
-        <import>macros.xml</import>
-    </macros>
     <requirements>
     </requirements>
     <command detect_errors="exit_code" interpreter="python">check_pre_aln_design_08brm.py

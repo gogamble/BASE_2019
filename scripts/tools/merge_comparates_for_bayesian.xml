@@ -1,8 +1,5 @@
 <tool id="merge_comparates_for_bayesian" name="Merge comparates for bayesian" version="0.1.0">
     <description>merge_comparates_for_bayesian</description>
-    <macros>
-        <import>macros.xml</import>
-    </macros>
     <requirements>
     </requirements>
     <command detect_errors="exit_code" interpreter="python">merge_comparates_for_bayesian_03amm.py
