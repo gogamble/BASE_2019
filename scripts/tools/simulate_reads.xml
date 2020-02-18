@@ -11,11 +11,11 @@
     </command>
     <inputs>
         <param name="input" type="data" format="tabular" label="FASTA file" help=""/>
-        <param name="num" type="text" label="Read length for simulation" help=""/>
-        <param name="prefix" type="text" label="A prefix to add to the read id for distinguishing where reads came from" help=""/>
+        <param name="num" type="text" label="Read Length" help="Enter desired read length for the simulation as a whole number"/>
+        <param name="prefix" type="text" label="Prefix" help="A prefix to add to the read id for distinguishing where reads came from"/>
     </inputs>
     <outputs>
-        <data format="tabular" name="out" label="simulate reads output"/>
+        <data format="tabular" name="out" label="Simulate reads output"/>
     </outputs>
     <help><![CDATA[
         TODO: Fill in help.

@@ -6,12 +6,12 @@
 --output=$output
 --g1=$g1
 --g2=$g2
---sam-compare-dir=$sam-compare-dir
+--samcompdir=$samcompdir
     </command>
     <inputs>
-        <param name="sam-compare-dir" type="data" format="tabular" label="Sam compare output" help=""/>
-        <param name="g1" type="text" label="column with G1 values" help=""/>
-        <param name="g2" type="text" label="column with G2 values" help=""/>
+        <param name="samcompdir" type="data" format="collection" label="Count Tables" help="Select the collection containing summed ase count tables"/>
+        <param name="g1" type="text" label="Tester" help="Enter the column which contains G1/Tester values"/>
+        <param name="g2" type="text" label="Line" help="Enter the column which contains G2/Line values"/>
     </inputs>
     <outputs>
         <data format="tabular" name="output" label="${tool.name} on ${on_string}:Check info"/>

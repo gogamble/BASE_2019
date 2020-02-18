@@ -4,11 +4,17 @@
     <command detect_errors="exit_code" interpreter="python">check_for_lost_reads.py
 --alnSum1=$alnSum1
 --alnSum2=$alnSum2
+--numread1=$numread1
+--numread2=$numread2
+--fq=$fq
 --out=$out
     </command>
     <inputs>
-        <param name="alnSum1" type="data" format="tabular" label="The G1 alignment summary file containing all read types [Required]" help="brecca TD"/>
-        <param name="alnSum2" type="data" format="tabular" label="The G2 alignment summary file containing all read types [Required]" help="brecca TD"/>
+        <param name="alnSum1" type="data" format="tabular" label="Alignment Summary 1" help="The G1 alignment summary file containing all read types [Required]"/>
+        <param name="alnSum2" type="data" format="tabular" label="Alignment Summary 2" help="The G2 alignment summary file containing all read types [Required]"/>
+        <param name="numread1" type="data" format="tabular" label="G1 Pre-Alignment File" help="Input file with G1 pre-alignment read count data"/>
+        <param name="numread2" type="data" format="tabular" label="G2 Pre-Alignment File" help="Input file with G2 pre-alignment read count data"/>
+        <param name="fq" type="text" label="FQ name" help="Name of FQ to be used for summary file"/>
     </inputs>
     <outputs>
        <data format="tabular" name="out" label="${tool.name} on ${on_string}: Lost Reads"/>

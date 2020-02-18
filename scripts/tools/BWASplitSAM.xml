@@ -14,9 +14,9 @@
     </command>
     <inputs>
         <param name="sam" type="data" format="tabular" label="SAM file" help=""/>
-        <param name="fq1" type="data" format="tabular" label="FastQ1 file" help=""/>
-        <param name="fq2" type="data" format="tabular" label="FastQ2 file" help=""/>
-        <param name="summname" type="text" label="Name in summary file" help=""/>
+        <param name="fq1" type="data" format="tabular" label="FQ1 file" help="Select the FastQ1 file from the dropdown [OPTIONAL]"/>
+        <param name="fq2" type="data" format="tabular" label="FQ2 file" help="Select the FastQ1 file from the dropdown [OPTIONAL]"/>
+        <param name="summname" type="text" label="Name in summary file" help="Enter the name to be used in summary file [OPTIONAL]"/>
     </inputs>
     <outputs>
         <data format="tabular" name="odir" label="${tool.name} on ${on_string}: Split SAM"/>

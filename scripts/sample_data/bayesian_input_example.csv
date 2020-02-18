@@ -1,0 +1,6 @@
+FEATURE_ID,qsim_g1,qsim_g2,qsim_both,c1_flag_analyze,c1_num_reps,c1_g1_total_rep1,c1_g2_total_rep1,c1_both_total_rep1,c1_g1_total_rep2,c1_g2_total_rep2,c1_both_total_rep2,c1_g1_total_rep3,c1_g2_total_rep3,c1_both_total_rep3,c2_flag_analyze,c2_num_reps,c2_g1_total_rep1,c2_g2_total_rep1,c2_both_total_rep1,c2_g1_total_rep2,c2_g2_total_rep2,c2_both_total_rep2,c2_g1_total_rep3,c2_g2_total_rep3,c2_both_total_rep3,comparison
+S21597_SI,,,,0,3,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,mel_R272_F_M
+S17996_SI,0.24265975820379965,0.24265975820379965,0.5146804835924007,1,3,1,4,0,0,3,4,1,0,1,1,3,5,0,9,0,2,0,0,2,5,mel_R272_F_M
+11227_SI,0.051257712387280496,0.051257712387280496,0.8974845752254391,1,3,5,5,141,4,13,174,7,8,117,1,3,9,20,241,4,12,140,9,10,202,mel_R272_F_M
+S2690_SI,0.12016293279022405,0.12016293279022405,0.7596741344195519,1,3,24,45,248,16,98,278,11,50,186,1,3,17,103,369,2,36,145,9,50,205,mel_R272_F_M
+S1686_SI,0.3555352798053528,0.3555352798053528,0.2889294403892944,1,3,2,1,3,2,5,3,1,1,0,1,3,1,6,2,0,0,0,3,2,2,mel_R272_F_M

@@ -11,11 +11,11 @@
 --apn=$apn
     </command>
     <inputs>
-        <param name="design" type="data" format="tabular" label="Design file" help=""/>
-        <param name="compCol" type="text" label="Name of the comparison column in your design file" help=""/>
-        <param name="lineCol" type="text" label="Name of the column in your design file containing lines" help=""/>
-        <param name="samCompdir" type="data" format="tabular" label="Summed ase count tables" help=""/>
-        <param name="apn" type="text" label="APN (average per nucleotide) value for flagging a feature as found and analyzable" help=""/>
+        <param name="design" type="data" format="tabular" label="Design file" help="select the design file containing fastq fqNames and sampleIDs"/>
+        <param name="compCol" type="text" label="Tester" help="Name of the comparison (eg G1 or Tester) column in your design file"/>
+        <param name="lineCol" type="text" label="Line" help="Name of the column in your design file containing lines (eg G2 or Line)"/>
+        <param name="samCompdir" type="data" format="collection" label="Summed Count Tables" help="Select collection of summed counts tables"/>
+        <param name="apn" type="text" label="APN" help="Enter average per nucleotide value for flagging a feature as found and analyzable"/>
     </inputs>
     <outputs>
         <data format="tabular" name="output" label="${tool.name} on ${on_string}:Check info"/>

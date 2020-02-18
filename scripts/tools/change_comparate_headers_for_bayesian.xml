@@ -11,9 +11,9 @@
     </command>
     <inputs>
         <param name="design" type="data" format="tabular" label="Design File" help="Contains G1, G2, comparate names, and compIDs for files to analyze[CSV]"/>
-        <param name="datafile" type="data" format="tabular" label="Input datafile" help=""/>
-        <param name="array" type="integer" label="Numerical value representing row of design file to be analyzed" help=""/>
-        <param name="cond" type="integer" label="Numerical value representing number of comparates to be analyzed" help=""/>
+        <param name="datafile" type="data" format="tabular" label="Input File" help="Select input file whose headers will be changed"/>
+        <param name="array" type="text" label="Row" help="Numerical value representing row of design file to be analyzed"/>
+        <param name="cond" type="text" label="Comparates" help="Numerical value representing number of comparates to be analyzed"/>
     </inputs>
     <outputs>
         <data format="tabular" name="output" label="${tool.name} on ${on_string}:Check info"/>

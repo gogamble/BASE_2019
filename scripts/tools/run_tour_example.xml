@@ -1,0 +1,21 @@
+<tool id="run_tour_example" name="Run extended bayesian model" version="0.1.0">
+    <description>for multiple conditions</description>
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code" interpreter="python">run_tour_example.py
+--design=$design
+--input=$input
+--output=$output
+    </command>
+    <inputs>
+        <param name="design" type="data" format="tabular" label="Design File" help=""/>
+        <param name="input" type="data" format="tabular" label="Input File" help=""/>
+    </inputs>
+    <outputs>
+        <data format="tabular" name="output" label="${tool.name} on ${on_string}:Bayesion Model Output"/>
+    </outputs>
+    <help><![CDATA[
+        TODO: Fill in help.
+    ]]></help>
+</tool>
+

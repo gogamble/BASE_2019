@@ -5,15 +5,17 @@
 --G1=$G1
 --bwa2=$bwa2
 --G2=$G2
+--fq=$fq
 --sam=$sam
 --out=$out
     </command>
     <inputs>
-        <param name="bwa1" type="data" format="tabular" label="The bwa split sam summary file containing uniq read counts sam1" help=""/>
-        <param name="G1" type="text" label="The genotype all others are compared to" help=""/>
-        <param name="bwa2" type="data" format="tabular" label="The bwa split sam summary file containing uniq read counts sam2"/>
-        <param name="G2" type="text" label="Comparing genotype" help=""/>
-        <param name="sam" type="data" format="tabular" label="The ase totals file containing read counts used in sam compare [Required]" help=""/>
+        <param name="bwa1" type="data" format="tabular" label="BWA1" help="The bwa split sam summary file containing uniq read counts sam1"/>
+        <param name="G1" type="text" label="Tester" help="The genotype all others are compared to, eg. Tester or G1"/>
+        <param name="bwa2" type="data" format="tabular" label="BWA2" help="The bwa split sam summary file containing uniq read counts sam2"/>
+        <param name="G2" type="text" label="Line" help="Enter the name of the comparing genome, eg line or G2"/>
+        <param name="fq" type="data" format="tabular" label="FastQ" help="Select the FastQ file"/>
+        <param name="sam" type="data" format="tabular" label="SAM" help="The ase totals file containing read counts used in sam compare [Required]"/>
     </inputs>
     <outputs>
         <data name="out" format="tabular" label="${tool.name} on ${on_string}: Lost reads"/>

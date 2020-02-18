@@ -31,7 +31,7 @@ __author__  = "Oleksandr Moskalenko <om@hpc.ufl.edu> and Hector del Risco <hdelr
 __version__ = '1.0.0'
 
 locale.setlocale(locale.LC_ALL, '')
-logger = logging.getLogger()
+#logger = logging.getLogger()
 
 # parse command line options
 def parse_options():
@@ -57,29 +57,29 @@ def parse_options():
     parser.add_argument("-c", "--counts", dest="counts", help="Output file name for the counts - CSV file. Defaults to counts_username_date_time_rand.csv. To output to console, set to -o stdout")
     parser.add_argument("-t", "--totals", dest="totals", help="Output file name for the totals - text file. Defaults to totals_username_date_time_randint.txt. To output to console, set to -t stdout")
     parser.add_argument("-n", "--nofqids", dest="nofqids", default=False, action='store_true', help="Do not check SAM reads QNAME against the fastq sequence ids. Saves time if already known to be good. Must still set -q option.")
-    parser.add_argument("-g", "--log", dest="log", required=False, help="Log file name. Defaults to samcompare_username_date_time_rand.log. To output to console, set to -g stdout. There is normally no stdout unless specifically requested via options.")
-    parser.add_argument("-d", "--debug", dest="debug", required=False, default=False, action='store_true', help="Debugging mode (verbose). Includes elapsed time display for performance tracking.")
+#    parser.add_argument("-g", "--log", dest="log", required=False, help="Log file name. Defaults to samcompare_username_date_time_rand.log. To output to console, set to -g stdout. There is normally no stdout unless specifically requested via options.")
+#    parser.add_argument("-d", "--debug", dest="debug", required=False, default=False, action='store_true', help="Debugging mode (verbose). Includes elapsed time display for performance tracking.")
     opts = parser.parse_args()
     return opts
 
 # set log output to either go to file or sys.stdout
 # error level messages, and above, will be sent to sys.stderr
-def setLogger(logfilename, level):
-    global logger
+#def setLogger(logfilename, level):
+#    global logger
 
-    console = True if logfilename.lower() == "stdout" else False
-    loghandler = logging.StreamHandler(stream=sys.stdout) if console else logging.FileHandler(logfilename)
-    errhandler = logging.StreamHandler(stream=sys.stderr)
-    logger.setLevel(level)
-    loghandler.setLevel(level)
-    errhandler.setLevel(logging.ERROR)
+#    console = True if logfilename.lower() == "stdout" else False
+#    loghandler = logging.StreamHandler(stream=sys.stdout) if console else logging.FileHandler(logfilename)
+#    errhandler = logging.StreamHandler(stream=sys.stderr)
+#    logger.setLevel(level)
+#    loghandler.setLevel(level)
+#    errhandler.setLevel(logging.ERROR)
 
-    logfmt = logging.Formatter('%(levelname)s - %(message)s') if console else logging.Formatter('%(levelname)s - %(message)s')
-    errfmt = logging.Formatter('%(levelname)s - %(message)s')
-    loghandler.setFormatter(logfmt)
-    errhandler.setFormatter(errfmt)
-    logger.addHandler(loghandler)
-    logger.addHandler(errhandler)
+#    logfmt = logging.Formatter('%(levelname)s - %(message)s') if console else logging.Formatter('%(levelname)s - %(message)s')
+#    errfmt = logging.Formatter('%(levelname)s - %(message)s')
+#    loghandler.setFormatter(logfmt)
+#    errhandler.setFormatter(errfmt)
+#    logger.addHandler(loghandler)
+#    logger.addHandler(errhandler)
 
 # generate a temporary file name to use for all relevant files by forming 'filename_{base}.ext'
 # will use for temporary files, output files, and log files if names not provides as arguments
@@ -95,11 +95,11 @@ def get_fastq_ids(infilename, basefilename):
 
     outfilename = "fastqids_{0}".format(basefilename)
     cmd = "sed -n '1~4p' {0} | cut -f1 | cut -c2- > {1}".format(infilename, outfilename)
-    logger.debug("FQIDs cmd: {0}".format(cmd))
+    #logger.debug("FQIDs cmd: {0}".format(cmd))
     args = shlex.split(cmd)
     try:
         tstart = time.time()
-        logger.debug("Loading FASTQ data from file...")
+        #logger.debug("Loading FASTQ data from file...")
         # the check_call func has an issue, I think is due to the parsing of the args (using pipe, etc.) - figure it out later!!!
         #result = subprocess.check_call(args, shell=True)
         #if result == 0:
@@ -107,16 +107,16 @@ def get_fastq_ids(infilename, basefilename):
         if output == "":
             with open(outfilename) as f:
                 ids = f.read().splitlines()
-            logger.debug("Time to load FASTQ file into memory: {0:n} seconds, {1:n} lines".format(time.time() - tstart, len(ids)))
+            #logger.debug("Time to load FASTQ file into memory: {0:n} seconds, {1:n} lines".format(time.time() - tstart, len(ids)))
             if ids:
-                logger.debug("Creating FASTQ dictionary...")
+                #logger.debug("Creating FASTQ dictionary...")
                 tstart = time.time()
                 fqids = dict((x,None) for x in ids)
-                logger.debug("Time to create FASTQ ids dictionary: {0:n} seconds, {1:n} entries".format(time.time() - tstart, len(fqids)))
+                #logger.debug("Time to create FASTQ ids dictionary: {0:n} seconds, {1:n} entries".format(time.time() - tstart, len(fqids)))
         else:
-            logger.error("Unable to get FASTQ ids from file '{0}':\n{1}".format(infilename, output))
+            #logger.error("Unable to get FASTQ ids from file '{0}':\n{1}".format(infilename, output))
     except Exception as e:
-        logger.error("Unable to get FASTQ ids from file '{0}':\n{1}".format(infilename, e))
+        #logger.error("Unable to get FASTQ ids from file '{0}':\n{1}".format(infilename, e))
         fqids = {}
 
     # remove temporary file, may not exist
@@ -134,23 +134,23 @@ def process_sam_file(samid, filename, fqids, read_length):
 
     try:
         # load data from file into memory
-        logger.debug("Loading SAM{0} data from file '{1}' ...".format(samid, os.path.basename(filename)))
+        #logger.debug("Loading SAM{0} data from file '{1}' ...".format(samid, os.path.basename(filename)))
         tstart = time.time()
         with open(filename) as f:
             samdata = f.read().splitlines()
-        logger.debug("Time to load SAM{0} data from file: {1:n} seconds, {2:n} lines".format(samid, time.time() - tstart, len(samdata)))
+        #logger.debug("Time to load SAM{0} data from file: {1:n} seconds, {2:n} lines".format(samid, time.time() - tstart, len(samdata)))
 
         # process data records
         try:
-            logger.debug("Processing SAM{0} data records...".format(samid))
+            #logger.debug("Processing SAM{0} data records...".format(samid))
             tstart = time.time()
             samreads = get_sam_reads(samdata, fqids, read_length, samid)
-            logger.debug("Time to process SAM{0} data records: {1:n} seconds, {2:n} reads".format(samid, time.time() - tstart, len(samreads)))
+            #logger.debug("Time to process SAM{0} data records: {1:n} seconds, {2:n} reads".format(samid, time.time() - tstart, len(samreads)))
         except Exception as e:
-            logger.error("Unable to process SAM{0} data: {1}".format(samid, e))
+            #logger.error("Unable to process SAM{0} data: {1}".format(samid, e))
             samreads = {}
     except Exception as e:
-        logger.error("Unable to load SAM{0} data from file '{1}':\n{2}".format(samid, filename, e))
+        #logger.error("Unable to load SAM{0} data from file '{1}':\n{2}".format(samid, filename, e))
     print(samid)
     return samreads
 
@@ -257,11 +257,11 @@ def get_sam_reads(samdata, fqids, read_length, samid):
                 nofastq += 1
 
     # display debug stats
-    logger.debug("Processed a total of {0:n} records out of {1:n} input lines".format(processed, total))
+    #logger.debug("Processed a total of {0:n} records out of {1:n} input lines".format(processed, total))
     if nofastq:
-        logger.warning("Found {0:n} SAM{1} record(s) with no matching sequence in FASTQ file".format(nofastq, samid))
+        #logger.warning("Found {0:n} SAM{1} record(s) with no matching sequence in FASTQ file".format(nofastq, samid))
     if dupqname:
-        logger.warning("Found {0:n} SAM{1} records with same QNAME (read/segment from same template)".format(dupqname, samid))
+        #logger.warning("Found {0:n} SAM{1} records with same QNAME (read/segment from same template)".format(dupqname, samid))
     return (reads)
 
 # load feature data into dictionary
@@ -277,7 +277,7 @@ def get_features(filename):
         f.close()
     except Exception as e:
         features = {}
-        logger.error("Unable to process feature file '{0}':\n{1}".format(filename, e))
+        #logger.error("Unable to process feature file '{0}':\n{1}".format(filename, e))
         if f:
             f.close()
 
@@ -335,15 +335,15 @@ def process_read_counts(features, sama_reads, samb_reads):
         if feature not in counts:
             counts[feature] = dict(count_template)
             counts[feature]['feature'] = feature
-    logger.debug("Time to create count rows: {0:n} seconds, {1:n} rows".format(time.time() - tstart, len(counts)))
+    #logger.debug("Time to create count rows: {0:n} seconds, {1:n} rows".format(time.time() - tstart, len(counts)))
 
     # get all the unique, read ids, QNAMEs for sama and samb
     tstart = time.time()
     readkeys_sama = set(sama_reads.keys())
     readkeys_samb = set(samb_reads.keys())
     readkeys = readkeys_sama.union(readkeys_samb)
-    logger.debug("Readkey sets - A: {0:n}, B: {1:n}, Union: {2:n}".format(len(readkeys_sama), len(readkeys_samb), len(readkeys)))
-    logger.debug("Time to create readkey sets: {0:n} seconds".format(time.time() - tstart))
+    #logger.debug("Readkey sets - A: {0:n}, B: {1:n}, Union: {2:n}".format(len(readkeys_sama), len(readkeys_samb), len(readkeys)))
+    #logger.debug("Time to create readkey sets: {0:n} seconds".format(time.time() - tstart))
 
     # process all reads
     cnt = 0
@@ -415,7 +415,7 @@ def process_read_counts(features, sama_reads, samb_reads):
                     b_multi_inexact += 1
             else:
                 counts = {}
-                logger.error("Invalid b_count, {0}, with a_count = 0 for read id '{1}'".format(b_count, read_id))
+                #logger.error("Invalid b_count, {0}, with a_count = 0 for read id '{1}'".format(b_count, read_id))
                 break
         elif b_count == 0:
             if a_count == 1:
@@ -432,7 +432,7 @@ def process_read_counts(features, sama_reads, samb_reads):
                     a_multi_inexact += 1
             else:
                 counts = {}
-                logger.error("Invalid a_count, {0}, with b_count = 0 for read id '{1}'".format(a_count, read_id))
+                #logger.error("Invalid a_count, {0}, with b_count = 0 for read id '{1}'".format(a_count, read_id))
                 break
         else: #both a_count and b_count are not zero - either 1 or > 1
             if a_count == 1:
@@ -516,14 +516,14 @@ def process_read_counts(features, sama_reads, samb_reads):
 
     # total things up if no errors
     if counts:
-        logger.debug("Time to process all reads: {0:n} seconds, {1:n} records".format(time.time() - tstart, cnt))
+        #logger.debug("Time to process all reads: {0:n} seconds, {1:n} records".format(time.time() - tstart, cnt))
 
         # calculate total count and do sanity check
         total_count = a_single_exact + a_single_inexact + a_multi_exact + a_multi_inexact + b_single_exact + b_single_inexact + b_multi_exact + b_multi_inexact + both_unaligned + both_single_exact_same + both_single_exact_diff + both_single_inexact_same + both_single_inexact_diff + both_multi_exact + both_multi_inexact + a_se_b_si + a_si_b_se + a_se_b_me + a_me_b_se + a_se_b_mi + a_mi_b_se + a_si_b_me + a_me_b_si + a_si_b_mi + a_mi_b_si + a_me_b_mi + a_mi_b_me
         if len(readkeys) != total_count:
-            logger.error("Total count, {0:n}, did not match read count, {1:n}".format(total_count, len(readkeys)))
+            #logger.error("Total count, {0:n}, did not match read count, {1:n}".format(total_count, len(readkeys)))
         if addreadid:
-            logger.info("{0:n} records were added that did not have a matching feature read key".format(addreadid))
+            #logger.info("{0:n} records were added that did not have a matching feature read key".format(addreadid))
 
         # create totals list
         totals = [a_single_exact, a_single_inexact, a_multi_exact, a_multi_inexact,
@@ -575,7 +575,7 @@ def write_counts(filename, counts):
         if f != sys.stdout:
             f.close()
     except Exception as e:
-        logger.error("Unable to write counts output to file '{0}':\n{1}".format(filename, e))
+        #logger.error("Unable to write counts output to file '{0}':\n{1}".format(filename, e))
         if f and f != sys.stdout:
             f.close()
 
@@ -598,7 +598,7 @@ def write_totals(filename, totals):
         if f != sys.stdout:
             f.close()
     except Exception as e:
-        logger.error("Unable to write totals to file '{0}':\n{1}".format(filename, e))
+        #logger.error("Unable to write totals to file '{0}':\n{1}".format(filename, e))
         if f and f != sys.stdout:
            f.close()
 
@@ -613,12 +613,12 @@ def main():
 
     # parse command line options and setup logger to handle all output messages
     opts = parse_options()
-    filename = opts.log if opts.log else "samcompare_{0}.log".format(basefilename)
-    level = logging.DEBUG if opts.debug else logging.INFO
-    setLogger(filename, level)
+    #filename = opts.log if opts.log else "samcompare_{0}.log".format(basefilename)
+    #level = logging.DEBUG if opts.debug else logging.INFO
+    #setLogger(filename, level)
 
-    logger.info("SAM Compare version {0}".format(__version__))
-    logger.debug("Opts: {0}".format(opts))
+#    logger.info("SAM Compare version {0}".format(__version__))
+#    logger.debug("Opts: {0}".format(opts))
 
     # real files - temp!!!
     #opts.fastq = "/bio/ufhpc/om/projects/mcintyre/sam-compare/ase/s_1_combined.fq"
@@ -650,62 +650,62 @@ def main():
     tstart = time.time()
     fqids = {}
     if opts.nofqids:
-        logger.info("Skipping extracting IDs from fastq file, -n option specified")
+        #logger.info("Skipping extracting IDs from fastq file, -n option specified")
     else:
-        logger.info("Extracting IDs from fastq file...")
+        #logger.info("Extracting IDs from fastq file...")
         fqids = get_fastq_ids(opts.fastq, basefilename)
-        logger.debug("Time to get FASTQ file ids: {0:n} seconds".format(time.time() - tstart))
+        #logger.debug("Time to get FASTQ file ids: {0:n} seconds".format(time.time() - tstart))
 
     # make sure we got a request to skip checking ids or we got them
     if opts.nofqids or fqids:
         gc.collect()
-        logger.info("Processing SAMA file...")
+        #logger.info("Processing SAMA file...")
         tstart = time.time()
         sama_reads = process_sam_file("A", opts.sama, fqids, opts.length)
-        logger.debug("Time to process SAMA file: {0:n} seconds".format(time.time() - tstart))
+        #logger.debug("Time to process SAMA file: {0:n} seconds".format(time.time() - tstart))
         if sama_reads:
-            logger.info("Processing SAMB file...")
+            #logger.info("Processing SAMB file...")
             tstart = time.time()
             samb_reads = process_sam_file("B", opts.samb, fqids, opts.length)
-            logger.debug("Time to process SAMB file: {0:n} seconds".format(time.time() - tstart))
+            #logger.debug("Time to process SAMB file: {0:n} seconds".format(time.time() - tstart))
             if samb_reads:
                 fqids = {}
                 gc.collect()
                 # additional processing
-                logger.info("Loading feature data...")
+                #logger.info("Loading feature data...")
                 tstart = time.time()
                 features = get_features(opts.feature)
-                logger.debug("Time to process feature data: {0:n} seconds, {1:n} records".format(time.time() - tstart, len(features)))
+                #logger.debug("Time to process feature data: {0:n} seconds, {1:n} records".format(time.time() - tstart, len(features)))
                 if features:
-                    logger.info("Calculating read counts...")
+                    #logger.info("Calculating read counts...")
                     tstart = time.time()
                     totals, counts = process_read_counts(features, sama_reads, samb_reads)
-                    logger.debug("Time to calculate read counts: {0:n} seconds".format(time.time() - tstart))
+                    #logger.debug("Time to calculate read counts: {0:n} seconds".format(time.time() - tstart))
 
                     if totals and counts:
                         # write counts file
-                        logger.info("Writing counts file...")
+                        #logger.info("Writing counts file...")
                         tstart = time.time()
                         filename = opts.counts if opts.counts else "counts_{0}.csv".format(basefilename)
                         write_counts(filename, counts)
-                        logger.debug("Time to write counts file: {0:n} seconds".format(time.time() - tstart))
+                        #logger.debug("Time to write counts file: {0:n} seconds".format(time.time() - tstart))
 
                         # write totals file
-                        logger.info("Writing totals file...")
+                        #logger.info("Writing totals file...")
                         tstart = time.time()
                         filename = opts.totals if opts.totals else "totals_{0}.csv".format(basefilename)
                         write_totals(filename, totals)
-                        logger.debug("Time to write totals file: {0:n} seconds".format(time.time() - tstart))
+                        #logger.debug("Time to write totals file: {0:n} seconds".format(time.time() - tstart))
 
                         # all is good
                         retcode = 0
                     else:
-                        logger.error("Unable to get totals and counts")
+                        #logger.error("Unable to get totals and counts")
                 else:
-                    logger.error("No feature data available for processing")
+                    #logger.error("No feature data available for processing")
 
     # it took this long...
-    logger.info("All done. Total running time: {0:n} seconds".format(time.time() - tinitial))
+   # logger.info("All done. Total running time: {0:n} seconds".format(time.time() - tinitial))
     sys.exit(retcode)
 
 if __name__=='__main__':
